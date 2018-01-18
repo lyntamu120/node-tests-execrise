@@ -7,10 +7,31 @@ it('should add two numbers', () => {
     expect(res).toBe(44).toBeA('number');
 });
 
+// it ('should asyncAdd two numbers (incorrect way)', () => {
+//     utils.asyncAdd(4, 7, (sum) => {
+//         expect(sum).toBe(12).toBeA('number'); // still pass, mocha thinks your test is done
+//     });
+// });
+
+it ('should asyncAdd two numbers (correct way)', (done) => {
+    utils.asyncAdd(1, 1, (sum) => {
+        expect(sum).toBe(2).toBeA('number');
+        done();
+    });
+});
+
+
 it('should square a number', () => {
     var res = utils.square(4);
     expect(res).toBe(16).toBeA('number');
 });
+
+it ('should asyncSquare a number', (done) => {
+    utils.asyncSquare(3, (res) => {
+        expect(res).toBe(9).toBeA('number');
+        done();
+    })
+})
 
 it('should expect some values', () => {
     // expect(12).toNotBe(11);
